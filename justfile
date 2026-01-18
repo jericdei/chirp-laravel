@@ -6,5 +6,7 @@ composer *COMMAND:
     docker compose exec php composer {{COMMAND}}
 bun *COMMAND:
     docker compose exec php bun {{COMMAND}}
+bunx *COMMAND:
+    docker compose exec php bun x {{COMMAND}}
 dev:
-    docker compose exec php bun dev
+    docker compose exec php bun dev --host=0.0.0.0

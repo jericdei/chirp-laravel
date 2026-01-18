@@ -1,6 +1,8 @@
-import { Head } from '@inertiajs/react';
+import { Head, router } from '@inertiajs/react';
 
-export default function Welcome() {
+import { Button } from '@/components/ui/button';
+
+export default function Index() {
     return (
         <>
             <Head title="Welcome">
@@ -10,6 +12,10 @@ export default function Welcome() {
 
             <div>
                 <p>Hello World</p>
+
+                <Button onClick={() => {
+                    router.get('/chirp');
+                }}>Click me</Button>
             </div>
         </>
     );

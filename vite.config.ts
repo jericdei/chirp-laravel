@@ -22,6 +22,7 @@ export default defineConfig({
     },
     server: {
         host: '0.0.0.0',
+        allowedHosts: ['nginx.chirp.orb.local', 'localhost'],
         port: 5173,
         hmr: {
             host: process.env.VITE_HMR_HOST || 'localhost',
