@@ -1,0 +1,24 @@
+{
+	"name": "modules/chirp",
+	"description": "",
+	"type": "library",
+	"version": "1.0",
+	"license": "proprietary",
+	"require": {},
+	"autoload": {
+		"psr-4": {
+			"Modules\\Chirp\\": "src/",
+			"Modules\\Chirp\\Tests\\": "tests/",
+			"Modules\\Chirp\\Database\\Factories\\": "database/factories/",
+			"Modules\\Chirp\\Database\\Seeders\\": "database/seeders/"
+		}
+	},
+	"minimum-stability": "stable",
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Modules\\Chirp\\Providers\\ChirpServiceProvider"
+			]
+		}
+	}
+}

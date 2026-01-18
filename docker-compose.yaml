@@ -1,8 +1,3 @@
-version: '3.8'
-
-# Note: PHP 8.5.2 doesn't exist yet. Using PHP 8.4 (latest stable).
-# If you specifically need 8.5.2, you'll need to build a custom image or wait for its release.
-
 services:
   php:
     build:

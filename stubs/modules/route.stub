@@ -1,0 +1,6 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use StubModuleNamespace\StubClassNamePrefix\Http\Controllers\StubClassNamePrefixController;
+
+Route::get('/StubModuleNamePlural', StubClassNamePrefixController::class)->name('StubModuleNamePlural.index');

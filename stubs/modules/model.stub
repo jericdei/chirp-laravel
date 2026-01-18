@@ -1,0 +1,10 @@
+<?php
+
+namespace StubModuleNamespace\StubClassNamePrefix\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class StubClassNamePrefix extends Model
+{
+    protected $guarded = [];
+}
