@@ -1,3 +1,4 @@
+import { wayfinder } from '@laravel/vite-plugin-wayfinder';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import laravel from 'laravel-vite-plugin';
@@ -16,6 +17,7 @@ export default defineConfig({
             },
         }),
         tailwindcss(),
+        wayfinder(),
     ],
     esbuild: {
         jsx: 'automatic',
@@ -26,6 +28,9 @@ export default defineConfig({
         port: 5173,
         hmr: {
             host: process.env.VITE_HMR_HOST || 'localhost',
+        },
+        watch: {
+            usePolling: true,
         },
     },
 });

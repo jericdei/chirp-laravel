@@ -1,22 +1,29 @@
-import { Head, router } from '@inertiajs/react';
+import { router } from "@inertiajs/react";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/auth";
+import RootLayout from "@/layouts/root";
+import { login } from "@/routes/auth";
+import { index as chirpsIndex } from "@/routes/chirps";
 
 export default function Index() {
-    return (
-        <>
-            <Head title="Welcome">
-            <link rel="preconnect" href="https://fonts.bunny.net" />
-            <link href="https://fonts.bunny.net/css?family=albert-sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-            </Head>
+  const { user } = useAuth();
 
-            <div>
-                <p>Hello World</p>
+  if (!user) {
+    return router.get(login())
+  }
 
-                <Button onClick={() => {
-                    router.get('/chirp');
-                }}>Click me</Button>
-            </div>
-        </>
-    );
+  return (
+    <RootLayout>
+      <div>
+        <Button
+          onClick={() => {
+            router.get(chirpsIndex());
+          }}
+        >
+          Click me
+        </Button>
+      </div>
+    </RootLayout>
+  );
 }

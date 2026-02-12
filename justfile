@@ -10,3 +10,7 @@ bunx *COMMAND:
     docker compose exec php bun x {{COMMAND}}
 dev:
     docker compose exec php bun dev --host=0.0.0.0
+up:
+    docker compose up -d
+down:
+    docker compose down

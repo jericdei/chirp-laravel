@@ -16,6 +16,7 @@
         "laravel/reverb": "^1.0",
         "laravel/telescope": "^5.16",
         "laravel/tinker": "^2.10.1",
+        "laravel/wayfinder": "^0.1.13",
         "modules/chirp": "*"
     },
     "require-dev": {
