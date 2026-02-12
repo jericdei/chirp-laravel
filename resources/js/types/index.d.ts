@@ -8,16 +8,27 @@ export interface SharedData {
   [key: string]: unknown;
 }
 
-export interface User {
-  id: number;
+export interface BaseModel {
+  id: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface User extends BaseModel {
+  username: string;
+  email: string;
+  email_verified_at: string | null;
+  profile: Profile;
+}
+
+export interface Profile extends BaseModel {
+  user_id: string;
   first_name: string;
   middle_name: string | null;
   last_name: string;
   name: string;
-  email: string;
-  avatar?: string;
-  email_verified_at: string | null;
-  created_at: string;
-  updated_at: string;
-  [key: string]: unknown; // This allows for additional properties...
+  profile_picture_url: string | null;
+  bio: string | null;
+  birth_date: string | null;
+  location: string | null;
 }

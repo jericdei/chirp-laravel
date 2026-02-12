@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import type { User } from "@/types"
 import { store } from "@/routes/auth/logout"
+import { AvatarProps } from "@radix-ui/react-avatar"
 
 function getInitials(name: string): string {
   return name
@@ -32,8 +33,15 @@ interface UserMenuProps {
 }
 
 export function UserMenu({ user }: UserMenuProps) {
-  const displayName = user.name;
-  const initials = getInitials(displayName)
+  const displayName = user.profile.name;
+  const initials = getInitials(displayName);
+
+  const UserAvatar = (props: AvatarProps) => (
+    <Avatar {...props}>
+      <AvatarImage src={user.profile.profile_picture_url ?? undefined} alt={displayName} />
+      <AvatarFallback>{initials}</AvatarFallback>
+    </Avatar>
+  )
 
   return (
     <DropdownMenu>
@@ -42,20 +50,14 @@ export function UserMenu({ user }: UserMenuProps) {
           variant="ghost"
           className="relative flex items-center gap-2 p-0 focus-visible:ring-0"
         >
-          <Avatar className="size-8">
-            <AvatarImage src={user.avatar} alt={displayName} />
-            <AvatarFallback>{initials}</AvatarFallback>
-          </Avatar>
+          <UserAvatar className="size-8" />
         </Button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" className="">
         <DropdownMenuLabel>
           <DropdownMenuItem className="flex items-center gap-2">
-            <Avatar className="size-12">
-              <AvatarImage src={user.avatar} alt={displayName} />
-              <AvatarFallback>{initials}</AvatarFallback>
-            </Avatar>
+            <UserAvatar className="size-12" />
             <span className="font-medium">{displayName}</span>
           </DropdownMenuItem>
         </DropdownMenuLabel>

@@ -1,12 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginUserController extends Controller
+final class LoginUserController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -14,14 +17,23 @@ class LoginUserController extends Controller
     public function __invoke(Request $request)
     {
         $validated = $request->validate([
-            'email' => ['required', 'email'],
+            'usernameOrEmail' => ['required', 'string'],
             'password' => ['required'],
         ]);
 
-        if (! Auth::attempt($validated)) {
+        $user = User::query()
+            ->where('username', $validated['usernameOrEmail'])
+            ->orWhere('email', $validated['usernameOrEmail'])->first();
+
+        $attempt = Auth::attempt([
+            'email' => $user->email,
+            'password' => $validated['password'],
+        ]);
+
+        if (!$user || !$attempt) {
             return back()->withErrors([
-                'email' => 'The provided credentials do not match our records.',
-            ]);
+                'usernameOrEmail' => 'The provided credentials do not match our records.',
+            ])->onlyInput('usernameOrEmail');
         }
 
         return redirect()->route('home');

@@ -1,18 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Chirp\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class ChirpServiceProvider extends ServiceProvider
+final class ChirpServiceProvider extends ServiceProvider
 {
-    public function register()
-    {
-        //
-    }
+    public function register(): void {}
 
-    public function boot()
-    {
-        //
-    }
+    public function boot(): void {}
 }

@@ -14,7 +14,7 @@ export default function LoginPage() {
         <Form action={store.post()} className="w-full flex justify-center">
           {({ errors }) => (
             <div className="flex flex-col gap-4 mt-4 w-1/4">
-              <Input type="email" label="Email" name="email" error={errors.email} autoComplete="email" required />
+              <Input type="text" label="Username or Email" name="usernameOrEmail" error={errors.usernameOrEmail} autoComplete="usernameOrEmail" required />
               <Input type="password" label="Password" name="password" error={errors.password} autoComplete="current-password" required />
               <Button type="submit">Login</Button>
             </div>
